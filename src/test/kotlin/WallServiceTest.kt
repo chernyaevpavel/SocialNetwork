@@ -66,7 +66,7 @@ class WallServiceTest {
         WallService.add(post)
 
         val post1 = Post(
-            id = 2,
+            id = 4,
             ownerId = 123,
             fromId = 321,
             date = 548,
