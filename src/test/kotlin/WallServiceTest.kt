@@ -8,6 +8,7 @@ class WallServiceTest {
     fun clearBeforeTest() {
         WallService.clear()
     }
+
     @Test
     fun add() {
         val post = Post(
@@ -51,6 +52,7 @@ class WallServiceTest {
         )
         assertTrue(WallService.update(post1))
     }
+
     @Test
     fun updateFalse() {
         val post = Post(
@@ -77,4 +79,31 @@ class WallServiceTest {
         )
         assertFalse(WallService.update(post1))
     }
+
+    @Test(expected = PostNotFoundException::class)
+    fun shouldThrow() {
+        val comment = Comment(1, 1, 1, "test", 1, 1, emptyArray())
+        WallService.createComment(1, comment)
+    }
+
+    @Test
+    fun addComment() {
+        val post = Post(
+            id = 1,
+            ownerId = 123,
+            fromId = 321,
+            date = 548,
+            text = "1 post",
+            comments = Comments(),
+            likes = Likes(),
+            isFavorite = true
+        )
+        WallService.add(post)
+
+        val comment = Comment(1, 1, 1, "test", 1, 1, emptyArray())
+        val returnedComment = WallService.createComment(1, comment)
+
+        assertEquals(returnedComment.id, 1)
+    }
+
 }
