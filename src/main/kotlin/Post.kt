@@ -1,3 +1,4 @@
+class PostNotFoundException(message: String) : RuntimeException(message)
 data class Post(
     val id: Int,
     val ownerId: Int,
