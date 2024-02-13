@@ -16,8 +16,9 @@ class NoteServiceTest {
 
     @Test
     fun createComment() {
-        val id = NoteService.createComment(1, 0, 0, "test comment", "")
-        assertEquals(id, 1)
+        val id = NoteService.add("test title", "test text")
+        val idComment = NoteService.createComment(id, 0, 0, "test comment", "")
+        assertEquals(idComment, 1)
 
     }
 
