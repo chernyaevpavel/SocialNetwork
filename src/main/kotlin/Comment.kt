@@ -1,9 +1,10 @@
 data class Comment(
-    val id: Int,
+    override val id: Int,
     val fromId: Int,
     val date: Int,
-    val text: String,
+    var text: String,
     val replyToUser: Int,
     val replyToComment: Int,
-    val parentsStack: Array<Comment>
-)
+    val parentsStack: Array<Comment>,
+    val noteId: Int = 0
+): Id
