@@ -1,3 +1,5 @@
+package Models
+
 data class Note (
     override val id: Int,
     val ownerId: Int,
