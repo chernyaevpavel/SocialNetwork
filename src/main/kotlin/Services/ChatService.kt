@@ -44,7 +44,7 @@ object ChatService {
         return null
     }
 
-    fun <E : Message> MutableList<E>.isHaveUnreadMessage(): Boolean = this.none { !it.isRead }
+    fun <E : Message> MutableList<E>.isHaveUnreadMessage(): Boolean = this.none { it.isRead }
 
     fun createMessage(ownerId: Int, companionId: Int, text: String): Int {
         val directMessageId =
@@ -70,7 +70,8 @@ object ChatService {
         return true
     }
 
-    fun getUnreadChatsCount(): Int = directMessageList.map { it.messageList.isHaveUnreadMessage() }.size
+    fun c(): Int = directMessageList.filter { it.messageList.isHaveUnreadMessage() }.size
+
 
     private fun readMessages(messageList: List<Message>) {
         for (message in messageList) {

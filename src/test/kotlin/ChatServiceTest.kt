@@ -75,6 +75,9 @@ class ChatServiceTest {
         assertEquals(1, ChatService.getUnreadChatsCount())
         ChatService.createMessage(1, 2, "text")
         assertEquals(2, ChatService.getUnreadChatsCount())
+        ChatService.getNewMessages(1,1)
+        assertEquals(1, ChatService.getUnreadChatsCount())
+
     }
     @Test
     fun getNewMessages(){
