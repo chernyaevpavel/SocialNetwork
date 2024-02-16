@@ -39,6 +39,7 @@ class ChatServiceTest {
     fun haveUnreadMessage() {
         val id = ChatService.createDirectMessage(1, 1)
         val directMessage = ChatService.getDirectMessageById(id)
+        ChatService.createMessage(1,1,"text")
         val result = directMessage?.messageList?.isHaveUnreadMessage()
         assertTrue(result!!)
     }

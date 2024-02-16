@@ -21,7 +21,7 @@ object ChatService {
         }
         directMessageCounter++
         val directMessage = DirectMessage(directMessageCounter, ownerId, companionId)
-        directMessageList += directMessage
+        directMessageList.add(directMessage)
         return directMessage.id
     }
 
@@ -44,7 +44,7 @@ object ChatService {
         return null
     }
 
-    fun <E : Message> MutableList<E>.isHaveUnreadMessage(): Boolean = this.none { it.isRead }
+    fun <E : Message> MutableList<E>.isHaveUnreadMessage() = this.any { !it.isRead }
 
     fun createMessage(ownerId: Int, companionId: Int, text: String): Int {
         val directMessageId =
