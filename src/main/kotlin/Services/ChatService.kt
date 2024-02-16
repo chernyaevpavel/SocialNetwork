@@ -70,7 +70,7 @@ object ChatService {
         return true
     }
 
-    fun c(): Int = directMessageList.filter { it.messageList.isHaveUnreadMessage() }.size
+    fun getUnreadChatsCount(): Int = directMessageList.filter { it.messageList.isHaveUnreadMessage() }.size
 
 
     private fun readMessages(messageList: List<Message>) {
