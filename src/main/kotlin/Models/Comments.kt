@@ -1,3 +1,5 @@
+package Models
+
 data class Comments(
     val count: Int = 0,
     val canPost: Boolean = true,

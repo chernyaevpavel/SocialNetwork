@@ -1,3 +1,9 @@
+package Services
+
+import Models.Comment
+import Models.Post
+import Models.PostNotFoundException
+
 object WallService {
     private var posts = emptyArray<Post>()
     private var comments = emptyArray<Comment>()

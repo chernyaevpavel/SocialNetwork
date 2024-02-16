@@ -1,3 +1,10 @@
+package Services
+
+import Models.Comment
+import Models.ElementNotFoundException
+import Models.Id
+import Models.Note
+
 object NoteService {
     var notesList: MutableList<Note> = mutableListOf()
     var commentsList: MutableList<Comment> = mutableListOf()

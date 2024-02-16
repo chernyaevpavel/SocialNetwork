@@ -1,3 +1,5 @@
+package Models
+
 enum class PostType {
     POST,
     COPY,

@@ -1,3 +1,5 @@
+package Models
+
 data class Comment(
     override val id: Int,
     val fromId: Int,
