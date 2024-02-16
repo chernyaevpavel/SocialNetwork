@@ -39,9 +39,10 @@ object ChatService {
         directMessage.messageList.find { it.id == messageId }
 
     fun <E : DirectMessage> MutableList<E>.findDirectMessageId(ownerId: Int, companionId: Int): Int? {
-        val directMessage = this.find { it.ownerId == ownerId && it.companionId == companionId }
-        if (directMessage != null) return directMessage.id
-        return null
+           return this
+               .filter { it.ownerId == ownerId && it.companionId == companionId }
+               .map { it.id }
+               .firstOrNull()
     }
 
     fun <E : Message> MutableList<E>.isHaveUnreadMessage() = this.any { !it.isRead }
@@ -82,7 +83,10 @@ object ChatService {
     fun getNewMessages(companionId: Int, countMessage: Int): List<Message> {
         val directMessage = directMessageList.find { it.companionId == companionId }
             ?: throw DirectMessageNotFoundException("Чат с ID собедника $companionId не найден")
-        val messages = directMessage.messageList.filter { !it.isRead }.take(countMessage)
+        val messages = directMessage.messageList.asSequence()
+            .filter { !it.isRead }
+            .take(countMessage)
+            .toList()
         readMessages(messages)
         return messages
     }
